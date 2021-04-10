@@ -19,9 +19,6 @@ export class MarketComponent implements OnInit {
 
   ngOnInit() {
     this.triggerService(this.pageNumber, this.totalRecordstoShow);
-    
-
-     
   }
 
   showmore(e:any){
@@ -43,15 +40,8 @@ export class MarketComponent implements OnInit {
           let recordItem = record
           this.products.push(record)
         }
-
-        //this.allProducts = responseBody;
-        //this.products = responseBody; //.slice(0, this.totalRecordstoShow);
       }
     });
   }
-
-  ngOnDestroy() {
- 
-  }
-
+  
 }

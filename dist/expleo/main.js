@@ -189,11 +189,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class DataService {
+    //private REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page=100&page=1&sparkline=false";
     //https://api.coingecko.com/api/v3/coins/bitcoin?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.baseURL = "https://api.coingecko.com/api/v3/coins/";
-        this.REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page=100&page=1&sparkline=false";
     }
     handleError(error) {
         let errorMessage = 'Unknown error!';
@@ -208,8 +208,9 @@ class DataService {
         window.alert(errorMessage);
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["throwError"])(errorMessage);
     }
-    sendGetRequest() {
-        return this.httpClient.get(this.baseURL + this.REST_API_Market).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError));
+    sendGetRequest(pageNumber, records2Show) {
+        const REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page=" + records2Show + "&page=" + pageNumber + "&sparkline=false";
+        return this.httpClient.get(this.baseURL + REST_API_Market).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError));
     }
     getProductView(id) {
         return this.httpClient.get(this.baseURL + id + '?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError));
@@ -365,69 +366,76 @@ function MarketComponent_tr_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const product_r2 = ctx.$implicit;
-    const i_r3 = ctx.index;
+    const product_r3 = ctx.$implicit;
+    const i_r4 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", i_r3 + 1, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", i_r4 + 1, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate2"]("alt", "", product_r2.name, " (", product_r2.symbol, ")");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", product_r2.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate2"]("alt", "", product_r3.name, " (", product_r3.symbol, ")");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", product_r3.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c0, product_r2.id));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c0, product_r3.id));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](product_r2.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](product_r3.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", product_r2.symbol, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", product_r3.symbol, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](16, 11, product_r2.symbol));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](16, 11, product_r3.symbol));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](21, 13, product_r2.current_price, "EUR"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](21, 13, product_r3.current_price, "EUR"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](26, 16, product_r2.high_24h, "EUR"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](26, 16, product_r3.high_24h, "EUR"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](31, 19, product_r2.low_24h, "EUR"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](31, 19, product_r3.low_24h, "EUR"));
 } }
 function MarketComponent_a_24_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketComponent_a_24_Template_a_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.showmore($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketComponent_a_24_Template_a_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.showmore($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Show More");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function MarketComponent_div_25_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Loading...");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class MarketComponent {
     constructor(dataService) {
         this.dataService = dataService;
+        this.products = [];
         this.allProducts = [];
-        this.pageNumber = 0;
+        this.pageNumber = 1;
         this.totalRecordstoShow = 10;
         this.showmorehide = true;
+        this.showmorehideLoading = false;
     }
     ngOnInit() {
-        this.dataService.sendGetRequest().subscribe((responseBody) => {
-            console.log(responseBody);
-            if (responseBody) {
-                this.allProducts = responseBody;
-                this.products = responseBody.slice(0, this.totalRecordstoShow);
-            }
-        });
+        this.triggerService(this.pageNumber, this.totalRecordstoShow);
     }
     showmore(e) {
         e.preventDefault();
         this.pageNumber = this.pageNumber + 1;
-        const nextSetRecords = this.allProducts.slice(this.pageNumber * this.totalRecordstoShow, (this.pageNumber * this.totalRecordstoShow) + 10);
-        //nextSetRecords.forEach()
-        for (var nextSetRecord of nextSetRecords) {
-            this.products.push(nextSetRecord);
-        }
-        if (this.products.length === this.allProducts.length) {
-            this.showmorehide = false;
-        }
+        this.showmorehideLoading = true;
+        this.showmorehide = false;
+        this.triggerService(this.pageNumber, this.totalRecordstoShow);
     }
-    ngOnDestroy() {
+    triggerService(pageNumber, records2Show) {
+        this.dataService.sendGetRequest(pageNumber, records2Show).subscribe((responseBody) => {
+            console.log(responseBody);
+            this.showmorehideLoading = false;
+            this.showmorehide = true;
+            if (responseBody) {
+                for (var record of responseBody) {
+                    let recordItem = record;
+                    this.products.push(record);
+                }
+            }
+        });
     }
 }
 MarketComponent.ɵfac = function MarketComponent_Factory(t) { return new (t || MarketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"])); };
-MarketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MarketComponent, selectors: [["app-market"]], decls: 27, vars: 2, consts: [[1, "coingecko-table", "table-responsive", "containerdiv"], ["id", "gecko-table-all", "data-sort-by", "", 1, "table", "table-scrollable", "text-sm", "text-lg-normal"], [1, "table-number"], [1, "text-left"], [1, "d-none", "d-lg-inline"], ["title", "translation missing: en.coins.th.symbol", 1, "translation_missing"], [1, "text-right", "price"], ["id", "chart-price-sort", "href", "#"], [1, "change24h", "text-right"], ["id", "chart-change24h-sort", "href", "/en/coins/all?sort_by=change24h"], [1, "lit", "text-right"], ["id", "chart-total-volume-sort", "href", "/en/coins/all?sort_by=total_volume"], ["data-target", "all-coins.tablebody"], [4, "ngFor", "ngForOf"], [1, "center"], ["class", "btn btn-primary btn-sm mt-3", "href", "#", 3, "click", 4, "ngIf"], ["data-target", "all-coins.loading", 1, "py-3", "hideloading"], [1, "tdwith"], [1, "d-flex"], [1, "coin-icon", "mr-2", "center", "flex-column"], [3, "alt", "src"], [3, "routerLink"], [1, "d-none", "d-lg-block", "font-bold"], [1, "d-lg-none", "font-bold"], [1, "d-none", "d-lg-inline", "font-normal", "text-3xs", "mt-1"], [1, "td-price", "price", "text-right", "px-0", "pl-2"], ["data-target", "currency.currencyLink", "href", "#"], [1, "no-wrap"], [1, "td-change24h", "change24h", "text-right", "stat-percent", "px-0", "pl-2"], ["href", "#"], [1, "td-total_volume", "lit", "text-right", "px-0", "pl-2"], ["href", "#", 1, "btn", "btn-primary", "btn-sm", "mt-3", 3, "click"]], template: function MarketComponent_Template(rf, ctx) { if (rf & 1) {
+MarketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MarketComponent, selectors: [["app-market"]], decls: 26, vars: 3, consts: [[1, "coingecko-table", "table-responsive", "containerdiv"], ["id", "gecko-table-all", "data-sort-by", "", 1, "table", "table-scrollable", "text-sm", "text-lg-normal"], [1, "table-number"], [1, "text-left"], [1, "d-none", "d-lg-inline"], ["title", "translation missing: en.coins.th.symbol", 1, "translation_missing"], [1, "text-right", "price"], ["id", "chart-price-sort", "href", "#"], [1, "change24h", "text-right"], ["id", "chart-change24h-sort", "href", "/en/coins/all?sort_by=change24h"], [1, "lit", "text-right"], ["id", "chart-total-volume-sort", "href", "/en/coins/all?sort_by=total_volume"], ["data-target", "all-coins.tablebody"], [4, "ngFor", "ngForOf"], [1, "center"], ["class", "btn btn-primary btn-sm mt-3", "href", "#", 3, "click", 4, "ngIf"], ["class", "py-3", "data-target", "all-coins.loading", 4, "ngIf"], [1, "tdwith"], [1, "d-flex"], [1, "coin-icon", "mr-2", "center", "flex-column"], [3, "alt", "src"], [3, "routerLink"], [1, "d-none", "d-lg-block", "font-bold"], [1, "d-lg-none", "font-bold"], [1, "d-none", "d-lg-inline", "font-normal", "text-3xs", "mt-1"], [1, "td-price", "price", "text-right", "px-0", "pl-2"], ["data-target", "currency.currencyLink", "href", "#"], [1, "no-wrap"], [1, "td-change24h", "change24h", "text-right", "stat-percent", "px-0", "pl-2"], ["href", "#"], [1, "td-total_volume", "lit", "text-right", "px-0", "pl-2"], ["href", "#", 1, "btn", "btn-primary", "btn-sm", "mt-3", 3, "click"], ["data-target", "all-coins.loading", 1, "py-3"]], template: function MarketComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "table", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "thead");
@@ -468,9 +476,7 @@ MarketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](24, MarketComponent_a_24_Template, 2, 0, "a", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Loading...");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, MarketComponent_div_25_Template, 2, 0, "div", 16);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -478,6 +484,8 @@ MarketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.products);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showmorehide);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showmorehideLoading);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CurrencyPipe"]], styles: [".containerdiv[_ngcontent-%COMP%] {\r\n  font-family: \"Droid Sans Mono\", Menlo, Monaco, Consolas, \"Liberation Mono\",\r\n    \"Courier New\", monospace;\r\n  padding: 5%;\r\n}\r\n.tdwith[_ngcontent-%COMP%] {\r\n  width: 20%;\r\n}\r\n.hideloading[_ngcontent-%COMP%] {\r\n  display: none;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcmtldC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7NEJBQzBCO0VBQzFCLFdBQVc7QUFDYjtBQUNBO0VBQ0UsVUFBVTtBQUNaO0FBQ0E7RUFDRSxhQUFhO0FBQ2YiLCJmaWxlIjoibWFya2V0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyZGl2IHtcclxuICBmb250LWZhbWlseTogXCJEcm9pZCBTYW5zIE1vbm9cIiwgTWVubG8sIE1vbmFjbywgQ29uc29sYXMsIFwiTGliZXJhdGlvbiBNb25vXCIsXHJcbiAgICBcIkNvdXJpZXIgTmV3XCIsIG1vbm9zcGFjZTtcclxuICBwYWRkaW5nOiA1JTtcclxufVxyXG4udGR3aXRoIHtcclxuICB3aWR0aDogMjAlO1xyXG59XHJcbi5oaWRlbG9hZGluZyB7XHJcbiAgZGlzcGxheTogbm9uZTtcclxufVxyXG4iXX0= */"] });
 
 
