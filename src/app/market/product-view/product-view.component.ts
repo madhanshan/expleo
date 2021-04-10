@@ -10,7 +10,6 @@ import { DataService } from '../../data.service';
 export class ProductViewComponent implements OnInit {
   productId:any = '';
   productViewDetails:any = {};
-  loading =  true;
   constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -19,7 +18,6 @@ export class ProductViewComponent implements OnInit {
     this.productId = productIdFromRoute;
     this.dataService.getProductView(this.productId).subscribe((responseBody:any) => {
       console.log(responseBody);
-      this.loading = false;
       if(responseBody){
         this.productViewDetails = responseBody
       }
