@@ -1,0 +1,11 @@
+<p>{{productId}}</p>
+{{productViewDetails.hashing_algorithm}}
+<br> {{productViewDetails.name}}
+<br>
+<p><strong>Description:</strong></p>
+<p [innerHTML]="productViewDetails.description?.en"></p>
+
+
+<div class="center">
+    <a class="btn btn-primary btn-sm mt-3" (click)="goBackPage($event)">back</a>
+</div>

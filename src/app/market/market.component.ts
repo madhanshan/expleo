@@ -8,17 +8,41 @@ import { DataService } from '../data.service';
 })
 export class MarketComponent implements OnInit {
 
-  products = [];
+  products:any;
+  allProducts = []
+  pageNumber = 0;
+  totalRecordstoShow = 10;
+  showmorehide = true;
 
   constructor(private dataService: DataService) { }
 
-  ngOnInit(): void {
-    alert("ghgfhgfhg............");
+  ngOnInit() {
 
-    // this.dataService.sendGetRequestToUrl(this.dataService.prev).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-    //   console.log(res);
-    //   this.products = res.body;
-    // })
+    this.dataService.sendGetRequest().subscribe((responseBody:any) => {
+      console.log(responseBody);
+      if(responseBody){
+        this.allProducts = responseBody;
+        this.products = responseBody.slice(0, this.totalRecordstoShow);
+      }
+    });
+
+     
+  }
+  
+  showmore(e:any){
+    e.preventDefault();
+    this.pageNumber = this.pageNumber+1;
+    const nextSetRecords = this.allProducts.slice(this.pageNumber*this.totalRecordstoShow, (this.pageNumber*this.totalRecordstoShow)+10);
+    //nextSetRecords.forEach()
+
+    for (var nextSetRecord of nextSetRecords) {
+      this.products.push(nextSetRecord)
+    }
+    
+    if(this.products.length === this.allProducts.length){
+      this.showmorehide = false;
+    }
+
   }
 
   ngOnDestroy() {

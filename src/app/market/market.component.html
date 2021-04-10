@@ -1,1 +1,107 @@
-<h1>Welcome to Maret Page</h1>
+<div class="coingecko-table table-responsive" style="font-family: 'Droid Sans Mono',Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
+    <table class="table table-scrollable text-sm text-lg-normal" id="gecko-table-all" data-sort-by="">
+        <thead>
+            <tr>
+                <th class="table-number">#</th>
+                <th class="text-left">Coin</th>
+                <th class="text-left"><span class="d-none d-lg-inline"><span class="translation_missing" title="translation missing: en.coins.th.symbol">Symbol</span></span>
+                </th>
+                <th class="text-right price">
+                    <a id="chart-price-sort" href="#">Price</a>
+                </th>
+                <th class="change1h text-right">
+                    <a id="chart-change1h-sort" href="#">1h</a>
+                </th>
+                <th class="change24h text-right">
+                    <a id="chart-change24h-sort" href="/en/coins/all?sort_by=change24h">24h</a>
+                </th>
+                <th class="change7d text-right">
+                    <a id="chart-change24h-sort" href="/en/coins/all?sort_by=change7d">7d</a>
+                </th>
+                <th class="change30d text-right">
+                    <a id="chart-change24h-sort" href="/en/coins/all?sort_by=change30d">30d</a>
+                </th>
+                <th class="lit text-right">
+                    <a id="chart-total-volume-sort" href="/en/coins/all?sort_by=total_volume">24h Volume</a>
+                </th>
+                <th class="supply text-right">
+                    <a id="chart-circulating-supply-sort" href="/en/coins/all?sort_by=circulating_supply">Circulating Supply</a>
+                </th>
+                <th class="supply text-right">
+                    <a id="chart-total-supply-sort" href="/en/coins/all?sort_by=total_supply">Total Supply</a>
+                </th>
+                <th class="cap text-right">
+                    <a id="chart-marketcap-sort" data-html="true" data-toggle="tooltip" data-placement="top" data-title="Current Total Supply * Price" href="/en/coins/all" data-original-title="" title="">Mkt Cap</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody data-target="all-coins.tablebody">
+            <tr *ngFor="let product of products; let i = index">
+                <td class="table-number">
+                    {{i+1}}
+                </td>
+                <td style="width: 20%">
+                    <div class="d-flex">
+                        <div class="coin-icon mr-2 center flex-column">
+                            <img alt="{{product.name}} ({{product.symbol}})" [src]="product.image">
+                        </div>
+                        <div class="center">
+                            <a [routerLink]="['/productView', product.id]">
+                                <span class="d-none d-lg-block font-bold">{{product.name}}</span>
+                                <span class="d-lg-none font-bold">{{product.symbol}} </span>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="d-none d-lg-inline font-normal text-3xs mt-1">{{product.symbol}}</span>
+                </td>
+                <td class="td-price price text-right  px-0 pl-2">
+                    <a data-target="currency.currencyLink" href="https://www.coingecko.com/en/coins/bitcoin/usd">
+                        <span class="no-wrap" data-price-btc="1.0" data-coin-id="1" data-coin-symbol="btc" data-target="price.price" data-price-previous="60796.393">$60,796.39</span>
+                    </a>
+                </td>
+                <td class="td-change1h change1h text-right stat-percent px-0 pl-2 ">
+                    <span class="text-green" data-json="{&quot;aed&quot;:0.29420787052876535,&quot;ars&quot;:0.29420787052866126,&quot;aud&quot;:0.29420787052867137,&quot;bch&quot;:-0.3801552465587891,&quot;bdt&quot;:0.29420787052874137,&quot;bhd&quot;:0.2942078705285979,&quot;bmd&quot;:0.29420787052868347,&quot;bnb&quot;:-1.5574035405307163,&quot;brl&quot;:0.29420787052854774,&quot;btc&quot;:0,&quot;cad&quot;:0.29420787052871417,&quot;chf&quot;:0.2942078705287286,&quot;clp&quot;:0.29420787052878866,&quot;cny&quot;:0.2942078705286694,&quot;czk&quot;:0.2942078705286004,&quot;dkk&quot;:0.29420787052876335,&quot;dot&quot;:0.12072368875252713,&quot;eos&quot;:1.012561244674886,&quot;eth&quot;:0.7938064632776434,&quot;eur&quot;:0.29420787052870206,&quot;gbp&quot;:0.29420787052847186,&quot;hkd&quot;:0.2942078705286505,&quot;huf&quot;:0.2942078705290411,&quot;idr&quot;:0.2942078705287259,&quot;ils&quot;:0.29420787052894615,&quot;inr&quot;:0.29420787052884834,&quot;jpy&quot;:0.29420787052865893,&quot;krw&quot;:0.2942078705286135,&quot;kwd&quot;:0.2942078705287999,&quot;lkr&quot;:0.29420787052832015,&quot;ltc&quot;:0.48543009729529274,&quot;mmk&quot;:0.294207870528645,&quot;mxn&quot;:0.29420787052838826,&quot;myr&quot;:0.29420787052873354,&quot;ngn&quot;:0.29420787052839575,&quot;nok&quot;:0.29420787052866476,&quot;nzd&quot;:0.2942078705286489,&quot;php&quot;:0.29420787052861835,&quot;pkr&quot;:0.2942078705287013,&quot;pln&quot;:0.29420787052874303,&quot;rub&quot;:0.2942078705287284,&quot;sar&quot;:0.2942078705289802,&quot;sek&quot;:0.29420787052862807,&quot;sgd&quot;:0.2942078705286299,&quot;thb&quot;:0.29421105927920976,&quot;try&quot;:0.2942078705287646,&quot;twd&quot;:0.2942078705287118,&quot;uah&quot;:0.2942078705292027,&quot;usd&quot;:0.29420787052868347,&quot;vef&quot;:0.2942078705285892,&quot;vnd&quot;:0.294207870528608,&quot;xag&quot;:0.2942078705288503,&quot;xau&quot;:0.29420787052870523,&quot;xdr&quot;:0.2942078705287703,&quot;xlm&quot;:1.4373170656040954,&quot;xrp&quot;:0.1864852616479397,&quot;yfi&quot;:0.8758964848681029,&quot;zar&quot;:0.2942078705286041,&quot;bits&quot;:-0.22686471999902252,&quot;link&quot;:0.13312387426383443,&quot;sats&quot;:-0.22686471999902763}"
+                        data-coin-id="1" data-up-class="text-green" data-down-class="text-danger" data-24h="false" data-target="percent-change.percent">0.3%</span>
+                </td>
+                <td class="td-change24h change24h text-right stat-percent px-0 pl-2 ">
+                    <span class="text-green" data-json="{&quot;aed&quot;:4.412022678011565,&quot;ars&quot;:4.473920584838834,&quot;aud&quot;:4.3684812096298735,&quot;bch&quot;:1.8738079456759766,&quot;bdt&quot;:4.6869404425149845,&quot;bhd&quot;:4.401640146146769,&quot;bmd&quot;:4.412164812150686,&quot;bnb&quot;:-8.442096064654208,&quot;brl&quot;:6.535064635545732,&quot;btc&quot;:0,&quot;cad&quot;:3.933293258405299,&quot;chf&quot;:4.334060233372354,&quot;clp&quot;:4.766057391688294,&quot;cny&quot;:4.399419575516892,&quot;czk&quot;:5.121561731950789,&quot;dkk&quot;:4.376855300044297,&quot;dot&quot;:2.152742835023328,&quot;eos&quot;:5.195256826311901,&quot;eth&quot;:0.25522330405925414,&quot;eur&quot;:4.389306202709428,&quot;gbp&quot;:4.476901265227633,&quot;hkd&quot;:4.394407511152966,&quot;huf&quot;:4.128300034976555,&quot;idr&quot;:4.625490456032468,&quot;ils&quot;:4.7034735474172065,&quot;inr&quot;:4.396307630117372,&quot;jpy&quot;:4.710064177125313,&quot;krw&quot;:4.511251568813594,&quot;kwd&quot;:4.42704159262658,&quot;lkr&quot;:4.3203799479373295,&quot;ltc&quot;:1.7298903675043424,&quot;mmk&quot;:4.841437236277195,&quot;mxn&quot;:4.358557081180536,&quot;myr&quot;:4.386920091451726,&quot;ngn&quot;:4.84701852089096,&quot;nok&quot;:4.5372287288166,&quot;nzd&quot;:4.35129053353693,&quot;php&quot;:4.302043177860944,&quot;pkr&quot;:4.877583901754737,&quot;pln&quot;:4.062306640243056,&quot;rub&quot;:4.938174435587494,&quot;sar&quot;:4.395657096443884,&quot;sek&quot;:4.173902708445964,&quot;sgd&quot;:4.489259116419767,&quot;thb&quot;:4.354129299379914,&quot;try&quot;:4.518380077062472,&quot;twd&quot;:4.370715375667346,&quot;uah&quot;:4.855333313859273,&quot;usd&quot;:4.412164812150686,&quot;vef&quot;:4.412164812150504,&quot;vnd&quot;:4.5083829391607555,&quot;xag&quot;:4.650034505838803,&quot;xau&quot;:4.795945720041961,&quot;xdr&quot;:4.685377249554215,&quot;xlm&quot;:3.372039082898353,&quot;xrp&quot;:1.9145831250208376,&quot;yfi&quot;:11.199342342612002,&quot;zar&quot;:4.758687725480845,&quot;bits&quot;:-0.15666994672733656,&quot;link&quot;:4.289461451167918,&quot;sats&quot;:-0.15666994672734724}"
+                        data-coin-id="1" data-up-class="text-green" data-down-class="text-danger" data-24h="true" data-target="percent-change.percent">4.4%</span>
+                </td>
+                <td class="td-change7d change7d text-right stat-percent px-0 pl-2 ">
+                    <span class="text-green" data-json="{&quot;aed&quot;:2.716464123720653,&quot;ars&quot;:3.301292096834553,&quot;aud&quot;:2.5424745650058536,&quot;bch&quot;:-9.328498794368317,&quot;bdt&quot;:2.8145391321173303,&quot;bhd&quot;:2.6527326872055066,&quot;bmd&quot;:2.7161844717073422,&quot;bnb&quot;:-26.629341001491387,&quot;brl&quot;:2.226717019424193,&quot;btc&quot;:0,&quot;cad&quot;:2.3453443305529587,&quot;chf&quot;:0.7245560000232623,&quot;clp&quot;:1.7852110124452134,&quot;cny&quot;:2.4894034020705447,&quot;czk&quot;:1.2091967026029042,&quot;dkk&quot;:1.483590258046798,&quot;dot&quot;:-0.1594832653835673,&quot;eos&quot;:0.3306719836774646,&quot;eth&quot;:1.2750309953860006,&quot;eur&quot;:1.505291622626926,&quot;gbp&quot;:3.630208496506408,&quot;hkd&quot;:2.7405557416121975,&quot;huf&quot;:0.4737256221066106,&quot;idr&quot;:3.270146696552946,&quot;ils&quot;:1.4637999934254593,&quot;inr&quot;:4.610964954521692,&quot;jpy&quot;:1.7507709239723108,&quot;krw&quot;:1.9283923356394683,&quot;kwd&quot;:2.664144416658335,&quot;lkr&quot;:3.4823910461826015,&quot;ltc&quot;:-5.862630940047125,&quot;mmk&quot;:2.6333970175650707,&quot;mxn&quot;:1.9344883541509545,&quot;myr&quot;:2.5921311088190646,&quot;ngn&quot;:10.12738633818302,&quot;nok&quot;:2.1907910758812257,&quot;nzd&quot;:2.6415730881116897,&quot;php&quot;:2.6266153946447637,&quot;pkr&quot;:2.1782774402746985,&quot;pln&quot;:0.08476162358292566,&quot;rub&quot;:4.046031691899822,&quot;sar&quot;:2.712432207282385,&quot;sek&quot;:0.5201378108859814,&quot;sgd&quot;:2.4093662272476317,&quot;thb&quot;:3.3644067301641822,&quot;try&quot;:2.774697871945476,&quot;twd&quot;:2.3948534292196135,&quot;uah&quot;:2.92450924413437,&quot;usd&quot;:2.7161844717073422,&quot;vef&quot;:2.7161844717072223,&quot;vnd&quot;:2.762815049255466,&quot;xag&quot;:1.556861327087744,&quot;xau&quot;:1.9322678624034233,&quot;xdr&quot;:2.4304809286430697,&quot;xlm&quot;:-8.577831191559717,&quot;xrp&quot;:-41.36379643294259,&quot;yfi&quot;:-10.512217194269597,&quot;zar&quot;:2.3674123767533803,&quot;bits&quot;:-0.28843784224582586,&quot;link&quot;:1.740135501613558,&quot;sats&quot;:-0.28843784224582214}"
+                        data-coin-id="1" data-up-class="text-green" data-down-class="text-danger" data-24h="false" data-target="percent-change.percent">2.7%</span>
+                </td>
+                <td class="td-change30d change30d text-right stat-percent px-0 pl-2 ">
+                    <span class="text-green" data-json="{&quot;aed&quot;:8.283720137881536,&quot;ars&quot;:10.204843177455185,&quot;aud&quot;:9.805390096502757,&quot;bch&quot;:-9.809245629993438,&quot;bdt&quot;:8.07640491387943,&quot;bhd&quot;:8.23390514714385,&quot;bmd&quot;:8.289321513000715,&quot;bnb&quot;:-36.08442669684547,&quot;brl&quot;:8.445858627622911,&quot;btc&quot;:0,&quot;cad&quot;:7.504675350251704,&quot;chf&quot;:7.639796813360669,&quot;clp&quot;:6.226461810616749,&quot;cny&quot;:9.073290993512728,&quot;czk&quot;:7.581046319227444,&quot;dkk&quot;:8.516335651993206,&quot;dot&quot;:-3.297831572487566,&quot;eos&quot;:-31.930217648343906,&quot;eth&quot;:-9.825545795804107,&quot;eur&quot;:8.504967840765262,&quot;gbp&quot;:10.058160252698695,&quot;hkd&quot;:8.517004834878406,&quot;huf&quot;:5.724479530221451,&quot;idr&quot;:9.997975082272328,&quot;ils&quot;:7.234213673255198,&quot;inr&quot;:11.303221618098778,&quot;jpy&quot;:9.50655646568577,&quot;krw&quot;:6.782592013528295,&quot;kwd&quot;:7.988079574465563,&quot;lkr&quot;:10.43924551812375,&quot;ltc&quot;:-6.073499613282131,&quot;mmk&quot;:8.235991467952624,&quot;mxn&quot;:4.441355318241994,&quot;myr&quot;:8.486091933678697,&quot;ngn&quot;:11.670059364696604,&quot;nok&quot;:8.942184093413609,&quot;nzd&quot;:10.67377486182306,&quot;php&quot;:8.21060708630328,&quot;pkr&quot;:5.325447025185703,&quot;pln&quot;:7.422240842352037,&quot;rub&quot;:13.984311946825956,&quot;sar&quot;:8.27797447449394,&quot;sek&quot;:9.00576053523258,&quot;sgd&quot;:8.111256482834287,&quot;thb&quot;:10.907546440970831,&quot;try&quot;:17.84706256166333,&quot;twd&quot;:9.21852838189877,&quot;uah&quot;:8.889764331426518,&quot;usd&quot;:8.289321513000715,&quot;vef&quot;:8.289321513000578,&quot;vnd&quot;:8.488903504480344,&quot;xag&quot;:12.14346541587225,&quot;xau&quot;:7.210541497237621,&quot;xdr&quot;:8.3782040437502,&quot;xlm&quot;:-10.57205577413764,&quot;xrp&quot;:-52.63868700095927,&quot;yfi&quot;:-9.080293234247295,&quot;zar&quot;:4.955712306005079,&quot;bits&quot;:-0.027916291220881902,&quot;link&quot;:-0.9648751148904545,&quot;sats&quot;:-0.027916291220884234}"
+                        data-coin-id="1" data-up-class="text-green" data-down-class="text-danger" data-24h="false" data-target="percent-change.percent">8.3%</span>
+                </td>
+                <td class="td-total_volume lit text-right px-0 pl-2 ">
+                    <a href="/en/coins/bitcoin/trading_exchanges">
+                        <span class="no-wrap" data-price-btc="926015.161069986" data-no-decimal="false" data-target="price.price" data-price-previous="56298381656.36916">$56,298,381,656</span>
+                    </a>
+                </td>
+                <td class="td-circulating_supply ">
+                    <div class="cap-price text-right">
+                        18,678,556
+                    </div>
+                </td>
+                <td class="td-total_supply ">
+                    <div class="cap-price text-right">
+                        21 Million
+                    </div>
+                </td>
+                <td class="td-market_cap cap">
+                    <div class="cap-price text-right">
+                        <span class="no-wrap" data-price-btc="18678556.0" data-target="price.price" data-price-previous="1135588831248.5078">$1,135,588,831,249</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <a class="btn btn-primary btn-sm mt-3" style="" (click)="showmore($event)" href="#" *ngIf="showmorehide">Show More</a>
+        <div class="py-3" style="display: none;" data-target="all-coins.loading">Loading...</div>
+    </div>
+</div>
