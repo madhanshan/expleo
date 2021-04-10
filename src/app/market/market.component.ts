@@ -46,9 +46,7 @@ export class MarketComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    
-    // Unsubscribe from the subject
-    //this.dataService.unsubscribe();
+ 
   }
 
 }
