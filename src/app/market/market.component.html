@@ -45,12 +45,12 @@
                 </td>
                 <td class="td-change24h change24h text-right stat-percent px-0 pl-2 ">
                     <a href="#">
-                    <span class="no-wrap"> {{product.high_24h| currency:'EUR'}}</span>
-                </a>
+                        <span class="no-wrap"> {{product.high_24h| currency:'EUR'}}</span>
+                    </a>
                 </td>
                 <td class="td-total_volume lit text-right px-0 pl-2 ">
                     <a href="#">
-                        <span class="no-wrap" >{{product.low_24h |currency:'EUR'}}</span>
+                        <span class="no-wrap">{{product.low_24h |currency:'EUR'}}</span>
                     </a>
                 </td>
             </tr>
@@ -58,6 +58,6 @@
     </table>
     <div class="center">
         <a class="btn btn-primary btn-sm mt-3" (click)="showmore($event)" href="#" *ngIf="showmorehide">Show More</a>
-        <div class="py-3 hideloading"  data-target="all-coins.loading">Loading...</div>
+        <div class="py-3" data-target="all-coins.loading" *ngIf="showmorehideLoading">Loading...</div>
     </div>
 </div>

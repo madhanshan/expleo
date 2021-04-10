@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class DataService {
   baseURL = "https://api.coingecko.com/api/v3/coins/"
-  private REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page=100&page=1&sparkline=false";
+  //private REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   
   //https://api.coingecko.com/api/v3/coins/bitcoin?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
 
@@ -28,8 +28,9 @@ export class DataService {
     return throwError(errorMessage);
   }
 
-  public sendGetRequest(){
-    return this.httpClient.get(this.baseURL + this.REST_API_Market).pipe(catchError(this.handleError));
+  public sendGetRequest(pageNumber:any,records2Show:any){
+    const REST_API_Market = "markets?vs_currency=EUR&order=market_cap_desc&per_page="+records2Show+"&page="+pageNumber+"&sparkline=false";
+    return this.httpClient.get(this.baseURL + REST_API_Market).pipe(catchError(this.handleError));
   }
 
   public getProductView(id:any){
